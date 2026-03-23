@@ -64,7 +64,7 @@ export default function Navbar() {
                 <UserButton />
               )
             ) : (
-              <SignInButton />
+              <SignInButton mode="modal"/>
             )}
 
             {/* Hamburger */}

@@ -1,7 +1,9 @@
 import axiosLib from "axios";
 
 const axios = axiosLib.create({
-  baseURL: import.meta.env.BACKEND_URL || "http://localhost:3001/api",
+ baseURL: import.meta.env.DEV
+    ? "http://localhost:3001/api"
+    : import.meta.env.BACKEND_URL,
 });
 
 axios.interceptors.request.use(async (config) => {

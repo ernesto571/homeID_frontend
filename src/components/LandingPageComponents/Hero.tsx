@@ -30,7 +30,7 @@ export default function Hero() {
   useGSAP(() => {
     const heroSplit = new SplitText("#hero-title", { type: "chars, words" });
     const subtitleSplit = new SplitText("#hero-subtitle", { type: "lines" });
-
+ 
     gsap.from(heroSplit.chars, {
       opacity: 0,
       yPercent: 50,
@@ -81,11 +81,11 @@ export default function Hero() {
           <button
             aria-label="Browse Properties"
             onClick={handleRenterBrowse}
-            className="bg-[#e86822] rounded-lg md:text-[1.2rem] font-medium text-white py-2 md:py-4 px-5 md:px-10"
+            className="bg-[#e86822] rounded-lg md:text-[1.2rem] font-medium text-white py-2 md:py-4 px-5 md:px-10 hover:cursor-pointer hover:bg-[#e86822]/90 ease-in-out duration-200"
           >
             Browse Properties
           </button>
-          <button onClick={handleLandlordBrowse} className="bg-white rounded-lg md:text-[1.2rem] font-medium text-[#e86822] py-2 md:py-4 px-5 md:px-10">
+          <button onClick={handleLandlordBrowse} className="bg-white rounded-lg md:text-[1.2rem] font-medium text-[#e86822] py-2 md:py-4 px-5 md:px-10 hover:cursor-pointer hover:bg-gray-100 ease-in-out duration-200">
             List Your Property
           </button>
         </div>

@@ -2,11 +2,35 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
+import { useClerk, useUser } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HowItWorks() {
   const ref = useRef<HTMLElement>(null);
+  const { openSignUp } = useClerk();
+  const { isSignedIn } = useUser();
+  const navigate = useNavigate()
+
+
+  const handleRenterBrowse = () => {
+    if (!isSignedIn) {
+      openSignUp({ fallbackRedirectUrl: "/listings" }); // ✅ not signed in — show modal
+      // ✅ already signed in — go directly
+    } else {
+      navigate("/listings"); // ✅ already signed in — go directly
+      
+    }
+  };
+
+  const handleLandlordBrowse = () => {
+    if (isSignedIn) {
+      navigate("/dashboard"); // ✅ already signed in — go directly
+    } else {
+      openSignUp({ fallbackRedirectUrl: "/dashboard" }); // ✅ not signed in — show modal
+    }
+  };
 
   useGSAP(() => {
     gsap.from(ref.current, {
@@ -33,7 +57,7 @@ export default function HowItWorks() {
               <span>
                 <h1 className="text-[1.5rem] pt-2 font-medium text-gray-800">Find a rental home</h1>
                 <p className="pt-3 text-[0.9rem] text-gray-500">Browse available rental properties and discover places that match your budget, location, and lifestyle.</p>
-                <button className="bg-[#e86822] rounded-lg font-medium text-white py-3 px-6 mt-5 hover:cursor-pointer hover:bg-[#e86822]/90 ease-in-out duration-200">Browse Properties</button>
+                <button className="bg-[#e86822] rounded-lg font-medium text-white py-3 px-6 mt-5 hover:cursor-pointer hover:bg-[#e86822]/90 ease-in-out duration-200" onClick={handleRenterBrowse}>Browse Properties</button>
               </span>
             </div>
           </div>
@@ -45,7 +69,7 @@ export default function HowItWorks() {
               <span>
                 <h1 className="text-[1.5rem] pt-2 font-medium text-gray-800">List Your Property</h1>
                 <p className="pt-3 text-[0.9rem] text-gray-500">Property owners can easily create listings, upload photos, and reach potential tenants.</p>
-                <button className="bg-[#e86822] rounded-lg font-medium text-white py-3 px-6 mt-5 hover:cursor-pointer hover:bg-[#e86822]/90 ease-in-out duration-200">List Your Property</button>
+                <button className="bg-[#e86822] rounded-lg font-medium text-white py-3 px-6 mt-5 hover:cursor-pointer hover:bg-[#e86822]/90 ease-in-out duration-200" onClick={handleLandlordBrowse}>List Your Property</button>
               </span>
             </div>
           </div>

@@ -15,7 +15,7 @@ export default function ContactUs(){
         ease: "expo.out",
         scrollTrigger: {
             trigger: "#contact-us",
-            start: "top 70%",
+            start: "top 80%",
         },
         });
     }, []);

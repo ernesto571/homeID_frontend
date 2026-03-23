@@ -8,6 +8,7 @@ axios.interceptors.request.use(async (config) => {
   console.log("🌐 Making request to:", config.url);
 
   const token = await window.Clerk?.session?.getToken();
+
   console.log("🔑 Token exists:", !!token);
 
   if (token) {
@@ -25,7 +26,6 @@ axios.interceptors.request.use(async (config) => {
 
   return config;
 });
-
 
 axios.interceptors.response.use(
   (response) => {

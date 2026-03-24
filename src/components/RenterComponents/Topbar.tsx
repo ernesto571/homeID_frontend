@@ -70,7 +70,7 @@ export default function Topbar() {
           </div>
         </span>
 
-        <select className="text-gray-800 md:py-3 bg-white border-2 px-3 text-sm md:text-base rounded-md border-gray-200 outline-none">
+        <select className="text-gray-800 py-2 md:py-3 bg-white border-2 px-3 text-sm md:text-base rounded-md border-gray-200 outline-none">
           <option value="">Default Sorting</option>
           <option value="price-low">Price: Low to High</option>
           <option value="price-high">Price: High to Low</option>

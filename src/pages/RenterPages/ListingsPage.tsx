@@ -22,7 +22,7 @@ export default function ListingsPage() {
         {isLoading ? (
           <ListingsPageSkeleton />
         ) : allListings.length === 0 ? (
-          <div className="text-center mt-20">
+          <div className="text-center h-[80vh] mt-20">
             <h3 className="text-2xl font-semibold text-gray-700">No listings found</h3>
             <p className="text-gray-500">Try adjusting your search criteria.</p>
           </div>

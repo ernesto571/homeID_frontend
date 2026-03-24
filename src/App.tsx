@@ -13,6 +13,7 @@ import PropertyDetailsPage from "./pages/RenterPages/PropertyDetailsPage";
 import Enquiries from "./pages/LandlordPages/Enquiries";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
+import { Loader } from "lucide-react";
 
 function RenterRoute({ children }: { children: React.ReactNode }) {
   const { isSignedIn, isLoaded } = useUser();
@@ -28,7 +29,17 @@ function RenterRoute({ children }: { children: React.ReactNode }) {
     }
   }, [isLoaded, loading, isSignedIn, profile])
 
-  if (!isLoaded || loading) return null;
+  // ✅ Fix — add return
+  if (loading){
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <Loader className="size-10 animate-spin text-[#e86822]" />
+      </div>
+    );
+  }
+
+  if(!isLoaded) return null
+
   if (!isSignedIn) return <Navigate to="/" replace />;
   if (profile?.role !== "renter") return <Navigate to="/" replace />;
   return <>{children}</>;
@@ -48,7 +59,17 @@ function LandlordRoute({ children }: { children: React.ReactNode }) {
     }
   }, [isLoaded, loading, isSignedIn, profile])
 
-  if (!isLoaded || loading) return null;
+   // ✅ Fix — add return
+   if (loading){
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <Loader className="size-10 animate-spin text-[#e86822]" />
+      </div>
+    );
+  }
+
+  if(!isLoaded) return null
+  
   if (profile?.role !== "landlord") return <Navigate to="/" replace />;
   return <>{children}</>;
 }

@@ -83,7 +83,7 @@ export default function MyProperties() {
             To add a property please use a laptop
           </div>
           {/* Content */}
-          <div className="hidden lg:flex w-[90%] mx-auto mt-8 flex-1">
+          <div className="hidden  w-[90%] mx-auto mt-8 lg:flex lg:flex-col">
             <div className="flex justify-between items-center mb-6">
               <div>
                 <h1 className="text-2xl font-bold text-gray-800">My Properties</h1>

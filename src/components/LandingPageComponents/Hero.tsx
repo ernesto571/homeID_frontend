@@ -58,11 +58,14 @@ export default function Hero() {
 
   return (
     <section className="flex relative">
-      <img
-        src="https://res.cloudinary.com/dsljbxkfy/image/upload/v1773311389/bg-homepage_nqbhoc.jpg"
-        alt="homepage-background"
-        className="relative h-[90vh] md:h-[90vh] lg:h-[100%]"
-      />
+      <div className="relative h-[90vh] w-full">
+        <img
+          src="https://res.cloudinary.com/dsljbxkfy/image/upload/v1773311389/bg-homepage_nqbhoc.jpg"
+          alt="homepage-background"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      
       <div className="flex flex-col absolute inset-0 mt-[9rem] ml-5 md:ml-[5rem] text-[#080e51] w-[90%] md:w-[70%] lg:w-[40%]">
         <h1
           id="hero-title"

@@ -51,7 +51,7 @@ export const useLandlordAuthStore = create<AuthState>((set) => ({
       const res = await axios.get("/users/user-profile");
       const data = res.data;
 
-      console.log("🟢 fetchLandlordProfile: backend response", data);
+      // console.log("🟢 fetchLandlordProfile: backend response", data);
 
       set({
         profile: {

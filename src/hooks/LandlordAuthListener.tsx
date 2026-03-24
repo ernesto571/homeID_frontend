@@ -17,21 +17,21 @@ function LandlordAuthListener() {
         return;
       }
 
-      console.log("✅ User signed in:", {
-        id: user.id,
-        email: user.primaryEmailAddress?.emailAddress,
-        firstName: user.firstName,
-        lastName: user.lastName,
-      });
+      // console.log("✅ User signed in:", {
+      //   id: user.id,
+      //   email: user.primaryEmailAddress?.emailAddress,
+      //   firstName: user.firstName,
+      //   lastName: user.lastName,
+      // });
 
       try {
         // Create profile in backend (if not exists)
         await createLandlordProfile();
-        console.log("✅ Profile created/verified in backend");
+        // console.log("✅ Profile created/verified in backend");
 
         // Fetch profile to populate local state
         await fetchLandlordProfile();
-        console.log("✅ Profile fetched from backend");
+        // console.log("✅ Profile fetched from backend");
       } catch (error) {
         console.error("❌ Error syncing user:", error);
       }
